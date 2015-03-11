@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <catalog>
+            <children>
+                <categories>
+                    <children>
+                        <reorder_by_name>
+                            <title>Reorder Categories by Name</title>
+                            <action>adminhtml/categoriesReorder/byName</action>
+                        </reorder_by_name>
+                    </children>
+                </categories>
+            </children>
+        </catalog>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <catalog>
+                        <children>
+                            <categories>
+                                <children>
+                                    <zookal_reordercategories translate="title" module="zookal_reordercategories">
+                                        <title>Reorder Categories</title>
+                                        <sort_order>3000</sort_order>
+                                    </zookal_reordercategories>
+                                </children>
+                            </categories>
+                        </children>
+                    </catalog>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

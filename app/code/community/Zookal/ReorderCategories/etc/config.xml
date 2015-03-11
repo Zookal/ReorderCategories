@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Zookal_ReorderCategories>
+            <version>0.1.0</version>
+        </Zookal_ReorderCategories>
+    </modules>
+    <global>
+        <blocks>
+            <zookal_reordercategories>
+                <class>Zookal_ReorderCategories_Block</class>
+            </zookal_reordercategories>
+        </blocks>
+        <helpers>
+            <zookal_reordercategories>
+                <class>Zookal_ReorderCategories_Helper</class>
+            </zookal_reordercategories>
+        </helpers>
+        <models>
+            <zookal_reordercategories>
+                <class>Zookal_ReorderCategories_Model</class>
+            </zookal_reordercategories>
+        </models>
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <zookal_reordercategories before="Mage_Adminhtml">Zookal_ReorderCategories_Adminhtml</zookal_reordercategories>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Zookal_ReorderCategories>
+                    <files>
+                        <default>Zookal_ReorderCategories.csv</default>
+                    </files>
+                </Zookal_ReorderCategories>
+            </modules>
+        </translate>
+    </adminhtml>
+</config>

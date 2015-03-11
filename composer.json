@@ -1,0 +1,15 @@
+{
+    "name": "zookal/reorder-categories",
+    "license": "OSL-30",
+    "type": "magento-module",
+    "description": "Reorder categories by name, date, children count, etc",
+    "authors": [
+        {
+            "name": "Cyrill Schumacher",
+            "email": "cyrill+magento@schumacher.fm"
+        }
+    ],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

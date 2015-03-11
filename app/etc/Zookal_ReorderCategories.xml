@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Zookal_ReorderCategories>
+			<active>true</active>
+			<codePool>community</codePool>
+		</Zookal_ReorderCategories>
+	</modules>
+</config>
