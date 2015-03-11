@@ -13,46 +13,45 @@
 class Zookal_ReorderCategories_Adminhtml_CategoriesReorderController extends Mage_Adminhtml_Controller_Action
 {
     /**
-     *
      * @return bool
      */
     protected function _isAllowed()
     {
-        return Mage::getSingleton('admin/session')->isAllowed('system/config');
+        return Mage::getSingleton('admin/session')->isAllowed('catalog/categories/zookal_reordercategories');
+    }
+
+    /**
+     * @param Zookal_ReorderCategories_Model_Reorder $reorder
+     * @param                                        $msg
+     */
+    protected function _doIterate(Zookal_ReorderCategories_Model_Reorder $reorder, $msg)
+    {
+        if ($reorder->checkCount()) {
+            $this->getResponse()->sendResponse();
+            $reorder->iterate();
+            echo "\n<hr>\nDone!\n";
+            return;
+        }
+
+        $reorder->iterate();
+        $this->_getSession()->addSuccess($this->__('Successfully reordered by ' . $msg));
+        $this->_redirectReferer();
+        return;
     }
 
     public function byNameAction()
     {
-        $this->getResponse()->sendResponse();
-        $collection = Mage::getModel('catalog/category')->getCollection()
-            ->addAttributeToSelect('name')
-            ->addAttributeToSelect('level')
-            ->setLoadProductCount(false);
-        $collection->setOrder('level', 'ASC');
-        $collection->setOrder('name', 'ASC');
-        $collection->load(); // only load generates the real getSelect statement :-(
-
-        /** @var Mage_Core_Model_Resource_Iterator $collectionIterator */
-        $collectionIterator = Mage::getResourceModel('core/iterator');
-        $collectionIterator->walk(
-            $collection->getSelect(),
-            array(
-                array($this, 'categorySavePosition')
-            )
-        );
-        echo "\n<hr>\nDone!\n";
+        /** @var Zookal_ReorderCategories_Model_Reorder $reorder */
+        $reorder = Mage::getModel('zookal_reordercategories/reorder');
+        $reorder->setOrderByName();
+        $this->_doIterate($reorder, 'name');
     }
 
-    public function categorySavePosition(array $row)
+    public function byIDAction()
     {
-        $idx = $row['idx'] + 100;
-        $c   = Mage::getModel('catalog/category');
-        $c->setData($row['row']);
-        $c->setPosition($idx);
-        $c->getResource()->isPartialSave(true);
-        $c->getResource()->save($c);
-
-        echo $c->getId() . ' ';
-        flush();
+        /** @var Zookal_ReorderCategories_Model_Reorder $reorder */
+        $reorder = Mage::getModel('zookal_reordercategories/reorder');
+        $reorder->setOrderByID();
+        $this->_doIterate($reorder, 'ID');
     }
 }

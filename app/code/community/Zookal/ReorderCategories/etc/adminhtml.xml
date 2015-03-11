@@ -5,8 +5,12 @@
             <children>
                 <categories>
                     <children>
+                        <reorder_by_id>
+                            <title>Reorder all by ID ASC</title>
+                            <action>adminhtml/categoriesReorder/byID</action>
+                        </reorder_by_id>
                         <reorder_by_name>
-                            <title>Reorder Categories by Name</title>
+                            <title>Reorder all by Name ASC</title>
                             <action>adminhtml/categoriesReorder/byName</action>
                         </reorder_by_name>
                     </children>
