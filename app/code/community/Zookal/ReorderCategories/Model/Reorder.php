@@ -7,10 +7,15 @@
  * file that was distributed with this source code.
  *
  * @copyright  Copyright (c) Zookal Services Pte Ltd
- * @author     Cyrill Schumacher @schumacherfm, Chris Zaharia @chrisjz
+ * @author     Cyrill Schumacher @schumacherfm
  * @license    See LICENSE.txt
  */
-class Zookal_ReorderCategories_Model_Reorder
+
+/**
+ * @method Zookal_ReorderCategories_Model_Reorder setCategoryId(int)
+ * Class Zookal_ReorderCategories_Model_Reorder
+ */
+class Zookal_ReorderCategories_Model_Reorder extends Varien_Object
 {
     /**
      * @var Mage_Catalog_Model_Resource_Category_Collection
@@ -35,6 +40,10 @@ class Zookal_ReorderCategories_Model_Reorder
             $this->_collection = Mage::getModel('catalog/category')->getCollection()
                 ->addAttributeToSelect('level')
                 ->setLoadProductCount(false);
+            $id                = (int)$this->getData('category_id');
+            if ($id > 0) {
+                $this->_collection->addFieldToFilter('parent_id', ['eq' => $id]);
+            }
             $this->_collection->setOrder('level', 'ASC');
         }
         return $this->_collection;
@@ -94,5 +103,12 @@ class Zookal_ReorderCategories_Model_Reorder
     {
         $this->getCollection()
             ->setOrder('entity_id', 'ASC');
+    }
+
+    public function setOrderByRand()
+    {
+        /** @var Varien_Db_Select $s */
+        $s = $this->getCollection()->getSelect();
+        $s->orderRand();
     }
 }

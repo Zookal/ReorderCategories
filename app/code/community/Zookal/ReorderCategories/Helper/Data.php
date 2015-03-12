@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  *
  * @copyright  Copyright (c) Zookal Services Pte Ltd
- * @author     Cyrill Schumacher @schumacherfm, Chris Zaharia @chrisjz
+ * @author     Cyrill Schumacher @schumacherfm
  * @license    See LICENSE.txt
  */
 class Zookal_ReorderCategories_Helper_Data extends Mage_Core_Helper_Abstract

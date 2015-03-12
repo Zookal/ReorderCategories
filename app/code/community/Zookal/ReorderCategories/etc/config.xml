@@ -43,6 +43,16 @@
                 </Zookal_ReorderCategories>
             </modules>
         </translate>
+        <events>
+            <adminhtml_block_html_before>
+                <observers>
+                    <zookal_reordercategories>
+                        <class>zookal_reordercategories/observer</class>
+                        <method>addReorderButton</method>
+                    </zookal_reordercategories>
+                </observers>
+            </adminhtml_block_html_before>
+        </events>
     </adminhtml>
     <default>
         <catalog>

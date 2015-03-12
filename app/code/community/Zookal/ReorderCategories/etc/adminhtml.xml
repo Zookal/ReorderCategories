@@ -5,14 +5,28 @@
             <children>
                 <categories>
                     <children>
-                        <reorder_by_id>
-                            <title>Reorder all by ID ASC</title>
-                            <action>adminhtml/categoriesReorder/byID</action>
-                        </reorder_by_id>
-                        <reorder_by_name>
-                            <title>Reorder all by Name ASC</title>
-                            <action>adminhtml/categoriesReorder/byName</action>
-                        </reorder_by_name>
+                        <reorder>
+                            <title>Reorder</title>
+                            <children>
+                                <reorder_by_id>
+                                    <title>by ID ASC</title>
+                                    <action>adminhtml/categoriesReorder/byID</action>
+                                </reorder_by_id>
+                                <reorder_by_name>
+                                    <title>by Name ASC</title>
+                                    <action>adminhtml/categoriesReorder/byName</action>
+                                </reorder_by_name>
+                                <reorder_by_rand>
+                                    <title>Randomize</title>
+                                    <action>adminhtml/categoriesReorder/byRand</action>
+                                </reorder_by_rand>
+                                <!--<reorder_by_custom>-->
+                                    <!--@todo Custom reorder defined in System->Configuration-->
+                                    <!--<title>Custom</title>-->
+                                    <!--<action>adminhtml/categoriesReorder/byCustom</action>-->
+                                <!--</reorder_by_custom>-->
+                            </children>
+                        </reorder>
                     </children>
                 </categories>
             </children>
